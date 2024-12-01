@@ -132,9 +132,9 @@ const Form = ({navigation, route, transactions, create, update}) => {
       currency: data.currency.value
     }
     if(id){
-         update(id,converted); 
+      update(id,{...converted,id: id}); 
     }else{
-        create(converted);
+      create(converted);
     }
     
     navigation.navigate("list");
@@ -147,9 +147,8 @@ const Form = ({navigation, route, transactions, create, update}) => {
     const _id = params?.id;
 
     if(_id){
-      params.id = null;
       const transaction = transactions.find( item => item.id === _id);
-      
+
       setId(_id);
       setData({
           description: {
@@ -163,7 +162,7 @@ const Form = ({navigation, route, transactions, create, update}) => {
             errorText: null
           },
           datetime: {
-            value: transaction.datetime,
+            value: new Date(transaction.datetime),
             error: false,
             errorText: null
           },

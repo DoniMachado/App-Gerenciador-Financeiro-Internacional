@@ -10,7 +10,7 @@ import Form from './screens/Form.jsx';
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({});
   const [transactions, setTransactions] = useState([
     {"id":"uid-26z5k0vqhgw","description":"32","value":3256,"datetime":"2024-11-01T19:45:33.746Z","category":"Alimentação","type":"despesa","currency":"NOK"},
@@ -109,7 +109,14 @@ export default function App() {
                 tabBarIcon: ({ focused, color, size }) => (
                  <FontAwesome6 name="money-bill-transfer" size={size} color={color} />
                 ),
-              }}>
+              }}
+              listeners={({ navigation }) => ({
+                tabPress: (e) => {
+                  e.preventDefault(); 
+                  navigation.navigate('form');
+                },
+              })}
+              >
               {({navigation, route}) => (
                 <Form navigation={navigation} route={route} create={create} update={update} transactions={transactions}/>
               )}
