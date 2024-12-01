@@ -15,8 +15,10 @@ export default function App() {
   const [transactions, setTransactions] = useState([
     {"id":"uid-26z5k0vqhgw","description":"32","value":3256,"datetime":"2024-11-01T19:45:33.746Z","category":"Alimentação","type":"despesa","currency":"NOK"},
     {"id":"uid-26z5k0p3hgw","description":"description","value":125,"datetime":"2024-11-07T12:41:57.746Z","category":"Saúde","type":"despesa","currency":"USD"},
-     {"id":"uid-26ajk0p3hgw","description":"description","value":370,"datetime":"2024-11-09T23:28:33.746Z","category":"Lazer","type":"receita","currency":"USD"}
-  ]
+    {"id":"uid-26ajk0p3hgw","description":"description","value":370,"datetime":"2024-11-09T23:28:33.746Z","category":"Lazer","type":"receita","currency":"USD"},
+    {"id":"uid-tyaj4073hgw","description":"description","value":456,"datetime":"2024-01-11T23:28:33.746Z","category":"Lazer","type":"receita","currency":"USD"},
+    {"id":"uid-re0j4073hgw","description":"description","value":4506,"datetime":"2024-02-08T23:28:33.746Z","category":"Outros","type":"receita","currency":"USD"}
+    ]
 );
 
   const authenticate = (login, password) =>  {

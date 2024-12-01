@@ -147,6 +147,7 @@ const Form = ({navigation, route, transactions, create, update}) => {
     const _id = params?.id;
 
     if(_id){
+      params.id = null;
       const transaction = transactions.find( item => item.id === _id);
       
       setId(_id);
