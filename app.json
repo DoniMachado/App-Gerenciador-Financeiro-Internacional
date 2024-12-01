@@ -3,7 +3,7 @@
     "name": "react-native-at-ex1",
     "slug": "snack-f548d266-bbea-4898-a709-0e0203462b4c",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
