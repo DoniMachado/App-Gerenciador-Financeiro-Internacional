@@ -343,7 +343,7 @@ const Form = ({navigation, route, transactions, create, update}) => {
               <Picker.Item label='Selecione uma moeda' value=''/>
               {currency
                     .map(c =>
-                      <Picker.Item label={c.nomeFormatado} value={c.simbolo} />
+                      <Picker.Item label={c.nomeFormatado} value={c.simbolo} key={c.simbolo}/>
                   )
               }
             </Picker>
