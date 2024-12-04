@@ -23,7 +23,8 @@ const Form = ({navigation, route, transactions, create, update}) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currency, setCurrency] = useState([]);
-  const [dateTimePickerShow, setDateTimePickerShow] = useState(false);
+  const [datePickerShow, setDatePickerShow] = useState(false);
+  const [timePickerShow, setTimePickerShow] = useState(false);
 
   const validate = () => {
     let valid = true;
@@ -349,15 +350,37 @@ const Form = ({navigation, route, transactions, create, update}) => {
             {data.currency?.error && <Text style={styles.error}>{data.currency?.errorText}</Text>}
           </View>
            <View style={styles.container_input}>
-            <Pressable style={styles.input}  onPress={() => setDateTimePickerShow(true)}>
+            <Pressable style={styles.input}  onPress={() => setDatePickerShow(true)}>
               <View >
-                <Text style={styles.text}>{data.datetime?.value.toLocaleString('pt-BR')}</Text>
+                <Text style={styles.text}>{data.datetime?.value.toLocaleDateString('pt-BR')}</Text>
               </View>
             </Pressable>
-            {dateTimePickerShow && <DateTimePicker
+            {datePickerShow && <DateTimePicker
+              mode='date'
               value={data.datetime?.value}
               onChange={(_, date) => {
-                  setDateTimePickerShow(false);
+                  setDatePickerShow(false);
+                  if (date)
+                      setData({...data, datetime: {
+                        value: date,
+                        error: false,
+                        errorText: null
+                        } })
+              }}
+            />}
+            {data.datetime?.error && <Text style={styles.error}>{data.datetime?.errorText}</Text>}
+          </View>
+          <View style={styles.container_input}>
+            <Pressable style={styles.input}  onPress={() => setTimePickerShow(true)}>
+              <View >
+                <Text style={styles.text}>{data.datetime?.value.toLocaleTimeString('pt-BR')}</Text>
+              </View>
+            </Pressable>
+            {timePickerShow && <DateTimePicker
+              mode='time'
+              value={data.datetime?.value}
+              onChange={(_, date) => {
+                  setTimePickerShow(false);
                   if (date)
                       setData({...data, datetime: {
                         value: date,
@@ -380,7 +403,6 @@ const Form = ({navigation, route, transactions, create, update}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "ice",
     alignItems: 'stretch',
     justifyContent: 'flex-start',
@@ -397,7 +419,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'flex-start',
     gap: 15,
-    padding: 15,
+    padding: 20,
   },  
   switch_container:{
     flexDirection: "row",
