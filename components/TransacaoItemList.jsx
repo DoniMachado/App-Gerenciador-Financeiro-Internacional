@@ -123,7 +123,8 @@ const styles = StyleSheet.create({
     flex:1,
     overflow: 'hidden',
     fontSize: 12,
-    color: 'black',    
+    color: 'black',   
+    textAlign: 'center' 
   },
   value:{
     flex:1,
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     color: 'black',
+    textAlign: 'center' 
   },
   column:{
     flex:1,
